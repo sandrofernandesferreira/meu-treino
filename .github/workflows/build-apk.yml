@@ -1,0 +1,56 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Setup EAS
+        run: npm install -g eas-cli
+
+      - name: Build Android APK
+        run: eas build --platform android --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Download APK
+        run: |
+          BUILD_ID=$(eas build list --platform android --json | jq -r '.[0].id' | head -1)
+          echo "BUILD_ID=$BUILD_ID" >> $GITHUB_ENV
+
+      - name: Upload APK as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release
+          path: |
+            **/*.apk
+            **/*.aab
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            **/*.apk
+            **/*.aab
