@@ -3,9 +3,11 @@ name: Build APK
 on:
   push:
     branches:
+      - main
       - master
   pull_request:
     branches:
+      - main
       - master
   workflow_dispatch:
 
@@ -23,34 +25,42 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install -g eas-cli
 
-      - name: Setup EAS
-        run: npm install -g eas-cli
-
-      - name: Build Android APK
-        run: eas build --platform android --non-interactive
+      - name: Build with EAS
+        run: eas build --platform android --non-interactive --wait
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Download APK
-        run: |
-          BUILD_ID=$(eas build list --platform android --json | jq -r '.[0].id' | head -1)
-          echo "BUILD_ID=$BUILD_ID" >> $GITHUB_ENV
-
-      - name: Upload APK as artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v3
+        if: always()
         with:
-          name: app-release
+          name: android-apk
           path: |
             **/*.apk
             **/*.aab
+          retention-days: 30
 
-      - name: Create Release
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
+      - name: Create Release Notes
+        if: success()
+        run: |
+          echo "✅ APK Build Success" > RELEASE_NOTES.md
+          echo "📱 Download the APK from artifacts" >> RELEASE_NOTES.md
+          echo "📅 Build Date: $(date)" >> RELEASE_NOTES.md
+
+      - name: Upload Release Notes
+        if: success()
+        uses: actions/upload-artifact@v3
         with:
-          files: |
-            **/*.apk
-            **/*.aab
+          name: release-notes
+          path: RELEASE_NOTES.md
