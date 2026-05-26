@@ -1,0 +1,15 @@
+# Ignora arquivos desnecessários para o build
+node_modules/**
+.git/**
+.expo/**
+dist/**
+build/**
+android/build/**
+android/.gradle/**
+*.log
+.DS_Store
+*.jks
+*.keystore
+*.lock
+coverage/**
+.nyc_output/**

@@ -1,0 +1,247 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    MEU TREINO - GUIA RÁPIDO E CONTEXTO
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 SOBRE O PROJETO
+───────────────────────────────────────────────────────────────────────────────
+Nome: Meu Treino
+Tipo: App Android para acompanhamento de musculação
+Framework: React Native (Expo)
+Status: MVP (Telas de Login + Home com boas-vindas)
+
+Desenvolvedor: Sandro
+Local do projeto: C:\Sandro\PY\Sandro\Meu Treino
+Data de criação: Maio de 2026
+
+
+🎯 OBJETIVO PRINCIPAL
+───────────────────────────────────────────────────────────────────────────────
+• Criar um app mobile para celular Android
+• Permitir login com Gmail (Google Sign-In)
+• Após login, NUNCA pedir novamente (persistência local)
+• Mostrar tela inicial acolhedora com boas-vindas
+• Base para futuras features (treinos, gráficos, etc)
+
+
+📂 ESTRUTURA DO PROJETO
+───────────────────────────────────────────────────────────────────────────────
+Meu Treino/
+├── App.js                          → Ponto de entrada, navegação entre telas
+├── app.json                        → Config Expo (nome, versão, Android package)
+├── package.json                    → Dependências do projeto
+├── README.md                       → Instruções completas de setup
+├── help.txt                        → Este arquivo!
+└── src/
+    ├── context/
+    │   └── AuthContext.js          → Gerencia estado de login/logout
+    └── screens/
+        ├── LoginScreen.js          → Tela inicial (ilustração + botão Google)
+        ├── HomeScreen.js           → Tela pós-login (boas-vindas + stats)
+        └── LoadingScreen.js        → Tela de carregamento (verifica login salvo)
+
+
+🚀 COMO RODAR O APP
+───────────────────────────────────────────────────────────────────────────────
+
+1. PRIMEIRA VEZ (instalar dependências)
+   cd C:\Sandro\PY\Sandro\Meu Treino
+   npm install
+
+2. INICIAR O SERVIDOR DE DESENVOLVIMENTO
+   npx expo start
+
+3. TESTAR NO ANDROID
+   • Instale o app "Expo Go" na Google Play
+   • Abra o Expo Go no celular
+   • Escaneie o QR Code que apareceu no terminal
+
+4. O APP ABRIRÁ NO CELULAR EM SEGUNDOS
+
+
+🔑 COMO FUNCIONA A AUTENTICAÇÃO
+───────────────────────────────────────────────────────────────────────────────
+
+FLUXO DE LOGIN:
+  1. Usuário entra no app
+  2. LoadingScreen verifica: tem login salvo?
+  3. SIM → vai direto para HomeScreen (sem pedir login novamente)
+  4. NÃO → mostra LoginScreen com botão "Entrar com o Google"
+  5. Usuário clica → login simulado (depois será real via Google)
+  6. Dados salvos localmente com AsyncStorage
+  7. HomeScreen mostra mensagem: "Seja bem-vindo ao App que vai te..."
+
+FLUXO DE LOGOUT:
+  1. Na HomeScreen, clica em "Sair"
+  2. Deleta dados salvos
+  3. Volta para LoginScreen
+
+
+📝 ARQUIVOS PRINCIPAIS E O QUE FAZEM
+───────────────────────────────────────────────────────────────────────────────
+
+App.js
+  └─ Renderiza <AuthProvider> + <AppNavigator>
+  └─ AppNavigator mostra LoadingScreen → LoginScreen → HomeScreen conforme estado
+
+src/context/AuthContext.js
+  └─ useAuth() — hook para acessar { user, loading, signIn, signOut }
+  └─ loadStoredUser() — verifica AsyncStorage ao abrir o app
+  └─ signIn(userData) — salva usuário localmente
+  └─ signOut() — apaga dados e desautentica
+
+src/screens/LoginScreen.js
+  └─ Mostra ilustração do atleta levantando peso
+  └─ Botão "Entrar com o Google"
+  └─ ATUALMENTE: login simulado (mock)
+  └─ FUTURO: descomente a seção "LOGIN REAL COM GOOGLE" após configurar
+
+src/screens/HomeScreen.js
+  └─ Header com avatar e botão "Sair"
+  └─ Card animado com boas-vindas
+  └─ Stats: Treinos, Sequência, Horas (ainda em 0)
+  └─ Botão "Iniciar Treino de Hoje"
+  └─ Dica do dia
+  └─ Preview de features em breve
+
+src/screens/LoadingScreen.js
+  └─ Tela simples enquanto carrega dados do AsyncStorage
+
+
+🎨 DESIGN & TEMA
+───────────────────────────────────────────────────────────────────────────────
+Cores:
+  • Fundo: Dark (#0D0D1A, #1A1A2E, #16213E)
+  • Destaque: Laranja (#FF6B00)
+  • Texto: Branco (#FFFFFF) e cinza (#8892A4)
+
+Fontes: Sistema (React Native default)
+
+Componentes:
+  • Gradientes (expo-linear-gradient)
+  • Animações (React Native Animated)
+  • Cards com sombras
+  • Ícones emoji + Tabler (futura)
+
+
+⚙️ DEPENDÊNCIAS DO PROJETO
+───────────────────────────────────────────────────────────────────────────────
+expo                            → Framework base
+expo-linear-gradient            → Gradientes nas telas
+@react-native-async-storage/*   → Persistência de login
+@react-native-google-signin/*   → Login Google (descomente quando pronto)
+expo-auth-session               → Suporte OAuth (para Google)
+expo-web-browser                → Abre navegador para login
+
+
+🔐 PRÓXIMOS PASSOS: LOGIN REAL COM GOOGLE
+───────────────────────────────────────────────────────────────────────────────
+
+Para ativar o login REAL com Gmail, você precisa:
+
+1. Google Cloud Console
+   • Vá para: https://console.cloud.google.com
+   • Crie um novo projeto
+   • Vá em: APIs e Serviços → Credenciais
+   • Crie um cliente OAuth para Android + Web
+
+2. SHA-1 do seu keystore
+   • Terminal: cd android && ./gradlew signingReport
+   • Copie o SHA-1 no Google Cloud Console
+
+3. Baixar google-services.json
+   • Google Cloud Console → Download JSON
+   • Salve como: C:\Sandro\PY\Sandro\Meu Treino\google-services.json
+
+4. Ativar no código
+   • Abra: src/screens/LoginScreen.js
+   • Procure por: "SEU_WEB_CLIENT_ID_AQUI"
+   • Substitua pelo Web Client ID do Google
+   • Descomente a seção "LOGIN REAL COM GOOGLE"
+
+5. Recompile
+   • npx expo start (talvez precise limpar cache)
+
+
+📋 ROADMAP (PRÓXIMAS FEATURES)
+───────────────────────────────────────────────────────────────────────────────
+FASE 2: Treinos
+  [ ] Criar novo treino (escolher exercício)
+  [ ] Registrar séries, repetições, peso
+  [ ] Cronômetro de descanso
+  [ ] Histórico por data
+
+FASE 3: Evolução
+  [ ] Gráficos de peso por exercício
+  [ ] Controle de medidas corporais
+  [ ] Estatísticas gerais
+
+FASE 4: Planos
+  [ ] Planos de treino pré-definidos
+  [ ] Editor de planos personalizado
+  [ ] Notificações de lembrete
+
+FASE 5: Social
+  [ ] Compartilhar treinos
+  [ ] Comparar com amigos
+  [ ] Feed de atividades
+
+
+💡 DICAS PARA DESENVOLVIMENTO
+───────────────────────────────────────────────────────────────────────────────
+
+🔴 Quando mudar código:
+  • Salve e o Expo recompila automaticamente no celular (Fast Refresh)
+  • Se der erro, força: Pressione 'r' no terminal
+
+🔴 Debug:
+  • Abra Developer Menu no celular (shake device ou Cmd+D no emulador)
+  • Escolha "Debug remote JS"
+  • DevTools abrem no PC
+
+🔴 Dados persistidos:
+  • AsyncStorage salva na memória do celular
+  • Para limpar: dev menu → "Clear AsyncStorage"
+  • Ou use: await AsyncStorage.clear()
+
+🔴 Testes de velocidade:
+  • Crie usuários diferentes para testar fluxo completo
+
+🔴 Ícones:
+  • Atualmente usa emojis (💪, 🏋️, etc)
+  • Futuro: trocar por Tabler Icons (ti-heart, ti-star, etc)
+
+
+❓ PERGUNTAS FREQUENTES
+───────────────────────────────────────────────────────────────────────────────
+
+P: Como deletar o login salvo para testar de novo?
+R: No celular, abra Expo Go → seu projeto → shake → Clear AsyncStorage
+
+P: Posso rodar no iOS?
+R: Sim! Expo Go funciona em iOS também. Mesmo QR Code.
+
+P: Preciso de Android Studio?
+R: Não para testar com Expo Go. Só se quiser buildar APK/AAB.
+
+P: Como faço build para distribuir?
+R: eas build --platform android (requer conta Expo)
+
+P: Posso usar meu IP da rede local?
+R: Sim! No terminal, escolha a opção de rede local ao invés de Tunnel.
+
+P: O app funciona offline?
+R: Sim! Após primeiro login, funciona sem internet (dados salvos localmente).
+
+
+📞 NOTAS IMPORTANTES
+───────────────────────────────────────────────────────────────────────────────
+• Este é um MVP (Produto Mínimo Viável)
+• Foco: validar fluxo de login + interface
+• Próximas features virão em fases
+• Mantenha este arquivo atualizado enquanto desenvolver
+• Não deletar AsyncStorage do celular entre testes de mudanças pequenas
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    Criado em Maio de 2026 - Claude / Sandro
+═══════════════════════════════════════════════════════════════════════════════

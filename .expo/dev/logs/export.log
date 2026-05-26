@@ -1,0 +1,30 @@
+{"_e":"root:init","_t":1779762193810,"format":"v0-jsonl","version":"56.1.11"}
+{"_e":"env:mode","_t":1779762194106,"nodeEnv":"production","babelEnv":"production","mode":"production"}
+{"_e":"env:load","_t":1779762194113,"mode":"production","files":[],"env":{}}
+{"_e":"devserver:start","_t":1779762194176,"mode":"production","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":true}
+{"_e":"metro:config","_t":1779762194720,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":true,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1779762194976,"atlas":false,"workers":8,"host":null,"port":null}
+{"_e":"metro:bundling:started","_t":1779762195268,"id":"1","platform":"android","environment":null,"entry":"index.js"}
+{"_e":"metro:cache_read_error","_t":1779762195363,"message":"Unexpected end of MessagePack data"}
+{"_e":"metro:cache_read_error","_t":1779762195843,"message":"Unexpected end of MessagePack data"}
+{"_e":"metro:cache_read_error","_t":1779762195892,"message":"Unexpected end of MessagePack data"}
+{"_e":"root:init","_t":1779762211891,"format":"v0-jsonl","version":"56.1.11"}
+{"_e":"env:mode","_t":1779762212190,"nodeEnv":"production","babelEnv":"production","mode":"production"}
+{"_e":"env:load","_t":1779762212194,"mode":"production","files":[],"env":{}}
+{"_e":"devserver:start","_t":1779762212248,"mode":"production","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":true}
+{"_e":"metro:config","_t":1779762212769,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":true,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1779762213030,"atlas":false,"workers":8,"host":null,"port":null}
+{"_e":"metro:bundling:started","_t":1779762213376,"id":"1","platform":"android","environment":null,"entry":"index.js"}
+{"_e":"metro:cache_read_error","_t":1779762213472,"message":"Unexpected end of MessagePack data"}
+{"_e":"metro:cache_read_error","_t":1779762213913,"message":"Unexpected end of MessagePack data"}
+{"_e":"metro:cache_read_error","_t":1779762213975,"message":"Unexpected end of MessagePack data"}
+{"_e":"root:init","_t":1779762238257,"format":"v0-jsonl","version":"56.1.11"}
+{"_e":"env:mode","_t":1779762238536,"nodeEnv":"production","babelEnv":"production","mode":"production"}
+{"_e":"env:load","_t":1779762238543,"mode":"production","files":[],"env":{}}
+{"_e":"devserver:start","_t":1779762238608,"mode":"production","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":true}
+{"_e":"metro:config","_t":1779762239130,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":true,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1779762239392,"atlas":false,"workers":8,"host":null,"port":null}
+{"_e":"metro:bundling:started","_t":1779762239732,"id":"1","platform":"android","environment":null,"entry":"index.js"}
+{"_e":"metro:cache_read_error","_t":1779762239835,"message":"Unexpected end of MessagePack data"}
+{"_e":"metro:cache_read_error","_t":1779762240414,"message":"Unexpected end of MessagePack data"}
+{"_e":"metro:cache_read_error","_t":1779762240477,"message":"Unexpected end of MessagePack data"}

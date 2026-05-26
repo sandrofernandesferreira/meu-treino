@@ -1,0 +1,23 @@
+import React from 'react';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
+import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import LoadingScreen from './src/screens/LoadingScreen';
+
+// Navegador interno — troca de tela com base no estado de auth
+function AppNavigator() {
+  const { user, loading } = useAuth();
+
+  if (loading) return <LoadingScreen />;
+  if (!user) return <LoginScreen />;
+  return <HomeScreen />;
+}
+
+// Ponto de entrada com o provider de autenticação
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppNavigator />
+    </AuthProvider>
+  );
+}

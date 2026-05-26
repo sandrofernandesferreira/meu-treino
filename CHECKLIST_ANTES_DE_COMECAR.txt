@@ -1,0 +1,148 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║          🏋️  CHECKLIST - ANTES DE COMEÇAR                    ║
+║                                                               ║
+║             Tenha tudo pronto antes de rodar!                ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+
+📋 CHECKLIST DE DEPENDÊNCIAS:
+
+  □ Node.js instalado
+    → Verificar: abra PowerShell e digite: node --version
+    → Se não tiver: https://nodejs.org/
+    → Reinicie o PC após instalar
+
+  □ Internet ativa
+    → Necessária para instalar pacotes npm
+    → Necessária para fazer login Expo
+
+  □ Conta Expo (gratuita)
+    → Criar em: https://expo.dev/signup
+    → Leva 2 minutos
+    → Email + senha
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ PASSO 1: Verificar Node.js
+
+  1. Abra PowerShell (Windows + R → "powershell")
+
+  2. Digite:
+     node --version
+
+  3. Deve mostrar algo como:
+     v18.16.0 ✅
+
+  ❌ Se não reconhecer:
+     → Instale em: https://nodejs.org/
+     → Reinicie o PC
+     → Tente novamente
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ PASSO 2: Entrar na Pasta do Projeto
+
+  1. Abra PowerShell
+
+  2. Digite (copie e cole):
+     cd "C:\Sandro\PY\Sandro\Meu Treino"
+
+  3. Pressione Enter
+
+  4. Deve aparecer o caminho no prompt ✅
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ PASSO 3: Executar o Script de Build
+
+  Opção A - PowerShell (Recomendado):
+  ───────────────────────────────────
+
+  1. Na pasta, execute:
+     .\GERAR_APK_RAPIDO.ps1
+
+  2. Escolha opção 1 ou 2
+
+  3. Siga as instruções
+
+
+  Opção B - Batch (Duplo-clique):
+  ────────────────────────────────
+
+  1. Abra Windows Explorer
+
+  2. Navegue para: C:\Sandro\PY\Sandro\Meu Treino
+
+  3. Duplo-clique: GERAR_APK_FACIL.bat
+
+  4. Siga o menu na tela
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 O QUE ESPERAR:
+
+  Primeira execução:
+    ⏳ npm install     → 2-3 minutos
+    ⏳ eas login       → Você loga (manual)
+    ⏳ eas build       → 5-10 minutos
+
+  Resultado final:
+    ✅ MeuTreino.apk criado na pasta
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚨 PROBLEMAS COMUNS:
+
+  ❌ "PowerShell não reconhece o script"
+  └─ Solução:
+     1. Abra PowerShell como Administrador
+     2. Digite: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+     3. Responda: Y (sim)
+     4. Tente novamente
+
+  ❌ "npm install falha"
+  └─ Solução:
+     1. Verifique internet
+     2. Delete "node_modules"
+     3. Execute novamente: npm install
+
+  ❌ "eas login não funciona"
+  └─ Solução:
+     1. Crie conta em: https://expo.dev/signup
+     2. Use o email para criar conta
+     3. Faça login no script
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ QUANDO ESTIVER PRONTO:
+
+  ☑ Node.js funcionando
+  ☑ Conta Expo criada
+  ☑ Internet ativa
+  ☑ Pasta do projeto identificada
+
+  → Pode executar: .\GERAR_APK_RAPIDO.ps1
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 DOCUMENTAÇÃO DISPONÍVEL:
+
+  • COMECE_AQUI.txt ............ Início rápido
+  • BUILD_GUIDE.md ............. Guia detalhado
+  • ARQUIVOS_CRIADOS.md ........ O que foi criado
+  • README.md .................. Docs do projeto
+
+
+═══════════════════════════════════════════════════════════════
+
+Tudo pronto! Bora começar! 💪
+

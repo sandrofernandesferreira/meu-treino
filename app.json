@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Meu Treino",
+    "slug": "meu-treino",
+    "projectId": "4c5f7e9a-d2f1-45b8-9c3e-7b2a1f6d8c4e",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0D1A"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0D0D1A"
+      },
+      "package": "com.sandro.meutreino"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5a65b541-63fa-4e91-b62b-7d62f7d66fbc"
+      }
+    },
+    "owner": "sandrofferreira"
+  }
+}

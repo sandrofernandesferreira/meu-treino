@@ -1,0 +1,99 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║         🏋️  MEUTEINO - GERADOR DE APK PARA ANDROID           ║
+║                                                                ║
+║                     COMECE AQUI - RÁPIDO!                     ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+
+📌 O QUE VOCÊ PRECISA:
+
+  ✅ Node.js instalado (https://nodejs.org)
+     - Se não tiver, instale e reinicie o computador
+     - Abra PowerShell e verifique: node --version
+
+  ✅ Conta Expo gratuita (https://expo.dev/signup)
+     - Leva 2 minutos para criar
+     - Simples: email + senha
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ OPÇÃO 1 - RÁPIDA (Recomendada):
+
+  1. Abra PowerShell nesta pasta:
+     "C:\Sandro\PY\Sandro\Meu Treino"
+
+  2. Execute:
+     .\GERAR_APK_FACIL.bat
+
+  3. Escolha opção "1"
+
+  4. Faça login/crie conta Expo
+
+  5. Aguarde 5-10 minutos
+
+  6. Copie "MeuTreino.apk" para seu Android e instale!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 OPÇÃO 2 - TESTAR NO PC (Sem gerar APK):
+
+  1. Abra PowerShell nesta pasta
+
+  2. Execute:
+     npx expo start --web
+
+  3. Navegador abre automaticamente
+
+  4. Teste o app no PC
+
+  5. Pressione Ctrl+C para parar
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❓ NÃO FUNCIONA?
+
+  ❌ "Node.js não encontrado"
+     → Instale em: https://nodejs.org/
+     → Reinicie o PowerShell após instalar
+
+  ❌ "eas login não funciona"
+     → Crie conta em: https://expo.dev/signup
+     → Use email para login
+
+  ❌ "npm install falha"
+     → Delete: node_modules e package-lock.json
+     → Execute: npm install novamente
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 APÓS GERAR O APK:
+
+  1. Transfira "MeuTreino.apk" para seu Android
+  2. Abra gerenciador de arquivos no celular
+  3. Clique no APK
+  4. Permita "Instalar de fontes desconhecidas" (se pedido)
+  5. Instale
+  6. Abra o app "Meu Treino"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 MAIS INFORMAÇÕES:
+
+  • BUILD_GUIDE.md .............. Guia detalhado
+  • README.md ................... Documentação do projeto
+  • CONTEXTO_DO_PROJETO.md ...... Detalhes técnicos
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💪 BOA SORTE COM SEU APP DE TREINO!
+
+Para suporte adicional, consulte os arquivos de documentação.
+

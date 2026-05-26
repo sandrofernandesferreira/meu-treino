@@ -1,0 +1,25 @@
+Resolved "production" environment for the build. Learn more: https://docs.expo.dev/eas/environment-variables/#setting-the-environment-for-your-builds
+No environment variables with visibility "Plain text" and "Sensitive" found for the "production" environment on EAS.
+
+Specified value for "android.package" in app.json is ignored because an android directory was detected in the project.
+EAS Build will use the value found in the native code.
+
+
+✔ Using remote Android credentials (Expo server)
+✔ Using Keystore from configuration: Build Credentials HsBffkAKjP (default)
+
+Compressing project files and uploading to EAS Build. Learn more: https://expo.fyi/eas-build-archive
+- Compressing project files
+- Uploading to EAS Build (0 / 33.6 MB)
+✔ Uploaded to EAS 4s
+- Computing project fingerprint
+✔ Computed project fingerprint
+
+See logs: https://expo.dev/accounts/sandrofferreira/projects/meu-treino/builds/a4afecfa-2c54-483b-8533-554df3ab7c93
+
+Waiting for build to complete. You can press Ctrl+C to exit.
+- Waiting for build to complete.
+✔ Build finished
+
+🤖 Android app:
+https://expo.dev/artifacts/eas/mkvf2dnyZFTt4zNWYzMVJ4.apk
