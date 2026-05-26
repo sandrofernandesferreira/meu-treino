@@ -1,4 +1,4 @@
-name: Build APK
+name: Build APK (Gradle)
 
 on:
   push:
@@ -13,33 +13,38 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
+        uses: android-actions/setup-android@v3
 
       - name: Install npm dependencies
         run: npm install
 
-      - name: Install EAS CLI
-        run: npm install -g eas-cli expo-cli
+      - name: Install Expo CLI
+        run: npm install -g expo-cli
 
-      - name: Build Android APK
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      - name: Generate native Android code
         run: |
-          eas build --platform android --non-interactive --wait || echo "Build status: $?"
+          echo "Generating native Android project..."
+          npx expo prebuild --platform android --clean
+
+      - name: Build APK with Gradle
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleRelease
 
       - name: Find and upload APK
         if: always()
@@ -47,16 +52,31 @@ jobs:
         with:
           name: android-apk
           path: |
-            **/*.apk
-            **/*.aab
+            android/app/build/outputs/apk/release/*.apk
+            android/app/build/outputs/bundle/release/*.aab
           if-no-files-found: warn
 
-      - name: List artifacts
-        if: always()
-        run: find . -name "*.apk" -o -name "*.aab" | head -20
+      - name: Create Release
+        if: success()
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v-${{ github.run_number }}
+          release_name: APK Build #${{ github.run_number }}
+          body: |
+            Automated APK build generated successfully
+            Check artifacts for download
+          draft: false
+          prerelease: false
 
-      - name: Print build log
-        if: always()
-        run: |
-          echo "Build process completed"
-          echo "Check artifacts above for APK files"
+      - name: Upload APK to Release
+        if: success()
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: android/app/build/outputs/apk/release/app-release.apk
+          asset_name: MeuTreino-${{ github.run_number }}.apk
+          asset_content_type: application/vnd.android.package-archive
