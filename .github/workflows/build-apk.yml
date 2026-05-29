@@ -1,4 +1,4 @@
-name: Build APK (Gradle)
+name: Build APK
 
 on:
   push:
@@ -32,13 +32,8 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
-      - name: Install Expo CLI
-        run: npm install -g expo-cli
-
       - name: Generate native Android code
-        run: |
-          echo "Generating native Android project..."
-          npx expo prebuild --platform android --clean
+        run: npx expo prebuild --platform android --clean
 
       - name: Build APK with Gradle
         run: |
@@ -46,37 +41,21 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease
 
-      - name: Find and upload APK
+      - name: Upload APK artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: android-apk
-          path: |
-            android/app/build/outputs/apk/release/*.apk
-            android/app/build/outputs/bundle/release/*.aab
+          path: android/app/build/outputs/apk/release/*.apk
           if-no-files-found: warn
 
       - name: Create Release
         if: success()
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: v-${{ github.run_number }}
-          release_name: APK Build #${{ github.run_number }}
-          body: |
-            Automated APK build generated successfully
-            Check artifacts for download
+          tag_name: apk-build-${{ github.run_number }}
+          files: android/app/build/outputs/apk/release/*.apk
           draft: false
           prerelease: false
-
-      - name: Upload APK to Release
-        if: success()
-        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: android/app/build/outputs/apk/release/app-release.apk
-          asset_name: MeuTreino-${{ github.run_number }}.apk
-          asset_content_type: application/vnd.android.package-archive
